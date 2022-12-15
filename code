@@ -1,0 +1,38 @@
+{
+    "@type": "MessageCard",
+    "@context": "http://schema.org/extensions",
+    "themeColor": "0076D7",
+    "summary": "Zendesk Ticket SLA Breach Warning Notification - 1 hour warning",
+    "sections": [{
+        "activityTitle": "{{ticket.title}}",
+        "activitySubtitle": "{{ticket.id}}",
+        "activityImage": "https://theme.zdassets.com/theme_assets/1849076/6f4a831743146041380de0f315446c9eaeee3704.jpg",
+        "facts": [{
+            "name": "Assigned to",
+            "value": "{{ticket.assignee}}"
+        }, {
+            "name": "Status",
+            "value": "{{ticket.status}}"
+		}, {
+			"name": "Last Update",
+			"value": "{{ticket.updated_at}}"
+			
+        }],
+        "markdown": true
+    }],
+    "potentialAction": [{
+        "@type": "ActionCard",
+        "name": "Add a comment",
+        "inputs": [{
+            "@type": "TextInput",
+            "id": "comment",
+            "isMultiline": false,
+            "title": "Add a comment here for this task"
+        }],
+        "actions": [{
+            "@type": "HttpPOST",
+            "name": "Add comment",
+            "target": "https://learn.microsoft.com/outlook/actionable-messages"
+        }]
+    }]
+}
